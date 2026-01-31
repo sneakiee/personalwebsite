@@ -1,7 +1,18 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { routes } from 'virtual:generated-pages-react'
+import { useRoutes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import routes from '~react-pages'
+import { LanguageProvider } from './i18n/LanguageContext'
 
 export default function App() {
-  const router = createBrowserRouter(routes)
-  return <RouterProvider router={router} />
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <Pages />
+      </BrowserRouter>
+    </LanguageProvider>
+  )
+}
+
+function Pages() {
+  return useRoutes(routes)
 }
