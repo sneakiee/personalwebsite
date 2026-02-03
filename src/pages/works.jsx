@@ -61,7 +61,7 @@ export default function Works() {
           {/* Resume */}
           <div className={`pt-4 border-t ${isDark ? 'border-neutral-900' : 'border-neutral-200'}`}>
             <a href="#" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors text-sm`}>
-              download resume ↓
+              download resume ↓ (coming soon)
             </a>
           </div>
 
