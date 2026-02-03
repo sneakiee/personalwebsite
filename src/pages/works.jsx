@@ -8,19 +8,19 @@ export default function Works() {
 
   const experiences = [
     {
-      role: 'software developer',
-      company: 'company name',
-      period: '2024',
+      role: 'marketing coordinator',
+      company: 'hammerhacks 2025',
+      period: '2024-2025',
     },
     {
-      role: 'full stack developer',
-      company: 'startup inc',
-      period: '2023',
+      role: 'hybrid designer/developer',
+      company: 'acnecura',
+      period: '2025',
     },
     {
-      role: 'junior developer',
-      company: 'agency co',
-      period: '2022',
+      role: 'freelance graphic designer',
+      company: 'self-employed',
+      period: 'since 2019',
     },
   ]
 

@@ -8,19 +8,19 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: 'project one',
-      description: 'a full-stack web app with react and node.js',
-      link: '#',
+      title: 'hackclubtcg',
+      description: 'web-based trading card game for hack club (currently a pack opening simulator)',
+      link: 'https://hackclubtcg.netlify.app/',
     },
     {
-      title: 'project two',
-      description: 'mobile-first e-commerce platform',
-      link: '#',
+      title: 'rhythmpad',
+      description: 'a macropad designed for music and rhythm games',
+      link: 'https://github.com/sneakiee/rhythmpad',
     },
     {
-      title: 'project three',
-      description: 'ai-powered code suggestion tool',
-      link: '#',
+      title: 'pokemon card launcher',
+      description: 'launches pokemon cards like its money (its expensive)',
+      link: 'https://github.com/sneakiee/pokemon-card-launcher',
     },
   ]
 
