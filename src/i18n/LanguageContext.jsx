@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- hooks are intentionally co-located with their provider */
 import { createContext, useContext, useState, useEffect } from 'react'
 import { translations } from './translations'
 
@@ -21,27 +22,20 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem('language', language)
-    // Apply font class for Tagalog
-    if (language === 'tl') {
-      document.body.classList.add('lang-tl')
-    } else {
-      document.body.classList.remove('lang-tl')
-    }
-    // Uncomment below for Korean support:
-    // document.body.classList.remove('lang-tl', 'lang-ko')
-    // if (language === 'tl') {
-    //   document.body.classList.add('lang-tl')
-    // } else if (language === 'ko') {
-    //   document.body.classList.add('lang-ko')
-    // }
+    document.documentElement.lang = language
   }, [language])
 
   useEffect(() => {
     localStorage.setItem('theme', theme)
+    document.documentElement.dataset.theme = theme
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (meta) {
+      meta.setAttribute('content', theme === 'dark' ? '#05060A' : '#E9ECF7')
+    }
   }, [theme])
 
   const t = (key) => {
-    return translations[language][key] || key
+    return translations[language]?.[key] || key
   }
 
   const toggleLanguage = () => {
@@ -86,22 +80,17 @@ export function useTheme() {
 // Language toggle component
 export function LanguageToggle() {
   const { language, toggleLanguage } = useLanguage()
-  const { theme } = useTheme()
-  
-  // Uncomment below for Korean support:
-  // const getNextLanguage = () => {
-  //   if (language === 'en') return 'tl'
-  //   if (language === 'tl') return 'ko'
-  //   return 'en'
-  // }
-  
+  const next = language === 'en' ? 'Tagalog' : 'English'
+
   return (
-    <button 
+    <button
+      type="button"
       onClick={toggleLanguage}
-      className={`${theme === 'dark' ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors text-sm`}
+      className="control"
+      aria-label={`${language === 'en' ? 'tl' : 'en'} — switch language to ${next}`}
+      title={`switch language to ${next}`}
     >
       {language === 'en' ? 'tl' : 'en'}
-      {/* For Korean support, replace above with: {getNextLanguage()} */}
     </button>
   )
 }
@@ -109,13 +98,17 @@ export function LanguageToggle() {
 // Theme toggle component
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
-  
+  const next = theme === 'dark' ? 'light' : 'dark'
+
   return (
-    <button 
+    <button
+      type="button"
       onClick={toggleTheme}
-      className={`${theme === 'dark' ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors text-sm`}
+      className="control"
+      aria-label={`switch to ${next} theme`}
+      title={`switch to ${next} theme`}
     >
-      {theme === 'dark' ? '☀️' : '🌙'}
+      <span aria-hidden="true">◐</span>
     </button>
   )
 }

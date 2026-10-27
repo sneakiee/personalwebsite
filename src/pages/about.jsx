@@ -1,52 +1,64 @@
-import { Link } from 'react-router-dom'
-import { useLanguage, useTheme, LanguageToggle, ThemeToggle } from '../i18n/LanguageContext'
+import CelestialArt from '../components/CelestialArt'
+import Layout from '../components/Layout'
+import Reveal from '../components/Reveal'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function About() {
-  const { t } = useLanguage()
-  const { theme } = useTheme()
-
-  const isDark = theme === 'dark'
+  const { t, language } = useLanguage()
+  const skills = t('skills').split(',').map((skill) => skill.trim())
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-neutral-950 text-white' : 'bg-neutral-100 text-black'} flex items-center justify-center px-6 transition-colors`}>
-      <div className="max-w-md w-full">
-        {/* Back Link + Toggles */}
-        <div className="flex items-center justify-between mb-8">
-          <Link to="/" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors text-sm`}>
-            ← back
-          </Link>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <LanguageToggle />
-          </div>
+    <Layout title="about">
+      <section className="panel page-panel" aria-label="About Mikael">
+
+        <div className="panel-bar">
+          <span className="tag">01 / about</span>
+          <span className="tag">bio / tools</span>
         </div>
 
-        {/* Main Content */}
-        <div className="space-y-8">
-          {/* Title */}
-          <h1 className="text-2xl font-medium">about</h1>
-          
-          {/* Bio */}
-          <div className={`space-y-4 ${isDark ? 'text-neutral-400' : 'text-neutral-600'} leading-relaxed`}>
-            <p>{t('aboutBio1')}</p>
-            <p>{t('aboutBio2')}</p>
-            <p>{t('aboutBio3')}</p>
+        <div className="page-top">
+          <div className="page-heading">
+            <h1 className="page-title">
+              about<span className="accent">.</span>
+            </h1>
+            <p className="page-lede serif" lang={language}>
+              {t('aboutBio1')}
+            </p>
           </div>
 
-          {/* Skills */}
-          <div className="space-y-4">
-            <h2 className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-400'}`}>{t('skillsTitle')}</h2>
-            <p className={isDark ? 'text-neutral-400' : 'text-neutral-600'}>{t('skills')}</p>
-          </div>
-
-          {/* Navigation Links */}
-          <nav className={`flex flex-wrap gap-x-6 gap-y-2 text-sm pt-4 border-t ${isDark ? 'border-neutral-900' : 'border-neutral-200'}`}>
-            <Link to="/" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>home</Link>
-            <Link to="/works" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>works</Link>
-            <Link to="/portfolio" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>projects</Link>
-          </nav>
+          <figure className="art-frame page-art">
+            <CelestialArt body="saturn" />
+            <figcaption>
+              <span className="label">fig. 01 / saturn</span>
+              <span className="label">ring system</span>
+            </figcaption>
+          </figure>
         </div>
-      </div>
-    </div>
+
+        <div className="about-body">
+          <Reveal className="about-copy">
+            <p lang={language}>{t('aboutBio2')}</p>
+            <p lang={language}>{t('aboutBio3')}</p>
+          </Reveal>
+
+          <Reveal className="panel-inset about-tools" delay={80}>
+            <div className="inset-bar">
+              <span className="label">{t('skillsTitle')}</span>
+              <span className="label">{skills.length} tools</span>
+            </div>
+            <ul className="tool-list">
+              {skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        <div className="panel-base">
+          <span className="label">mikael gomez / hamilton, on</span>
+          <span className="label">fig. 01 — saturn</span>
+        </div>
+      </section>
+    </Layout>
   )
 }

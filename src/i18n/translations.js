@@ -9,7 +9,7 @@ export const translations = {
     aboutBio2: "right now i'm focused on learning as much as i can, building projects that interest me, and figuring out where i want to take my career.",
     aboutBio3: "outside of coding, you'll find me playing video games and editing videos.",
     skillsTitle: "things i work with",
-    skills: "java, javascript, react, node.js, python, tailwind, figma, git, photoshop, illustrator, after effects, premiere",
+    skills: "java, javascript, react, next.js, python, tailwind, figma, github, photoshop, illustrator, after effects, premiere",
   },
   tl: {
     // Home page
@@ -21,7 +21,7 @@ export const translations = {
     aboutBio2: "ngayon, nakatutok ako sa pag-aaral ng maraming bagay, paggawa ng mga proyektong interesado ako, at pag-iisip kung saan ko gustong dalhin ang aking career.",
     aboutBio3: "kapag hindi nagco-code, makikita mo akong naglalaro ng video games at nag-eedit ng mga video.",
     skillsTitle: "mga ginagamit ko",
-    skills: "java, javascript, react, node.js, python, tailwind, figma, git, photoshop, illustrator, after effects, premiere",
+    skills: "java, javascript, react, next.js, python, tailwind, figma, github, photoshop, illustrator, after effects, premiere",
   },
   // ko: {
   //   // Home page
