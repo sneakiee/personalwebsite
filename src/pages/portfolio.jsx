@@ -1,7 +1,6 @@
 import CelestialArt from '../components/CelestialArt'
 import Layout from '../components/Layout'
 import Reveal from '../components/Reveal'
-import Starfield from '../components/Starfield'
 
 const projects = [
   {
@@ -25,8 +24,6 @@ export default function Portfolio() {
   return (
     <Layout title="projects">
       <section className="panel page-panel" aria-label="Projects">
-        <Starfield variant="c" className="panel-stars" />
-        <Starfield variant="wide" className="panel-stars panel-stars-b" />
 
         <div className="panel-bar">
           <span className="tag">03 / projects</span>

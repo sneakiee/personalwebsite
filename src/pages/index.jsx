@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import CelestialArt from '../components/CelestialArt'
 import Layout from '../components/Layout'
 import Reveal from '../components/Reveal'
-import Starfield from '../components/Starfield'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const fieldIndex = [
@@ -17,8 +16,6 @@ export default function Home() {
   return (
     <Layout>
       <section className="panel hero-panel" aria-label="Introduction">
-        <Starfield variant="c" className="panel-stars" />
-        <Starfield variant="wide" className="panel-stars panel-stars-b" />
 
         <div className="panel-bar">
           <span className="tag">index / 00</span>
@@ -71,7 +68,6 @@ export default function Home() {
       </section>
 
       <section className="field-index" aria-labelledby="field-index-title">
-        <Starfield variant="cluster" className="section-stars" />
         <Reveal className="section-head">
           <div className="section-heading">
             <span className="tag">01 / index</span>

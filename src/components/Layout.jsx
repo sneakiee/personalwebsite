@@ -34,7 +34,6 @@ export default function Layout({ title, children }) {
     <div className="site">
       <div className="page-ambience" aria-hidden="true">
         <Starfield variant="wide" className="ambience-stars ambience-stars-top" />
-        <Starfield variant="cluster" className="ambience-stars ambience-stars-bottom" />
       </div>
 
       <a className="skip" href="#main">
@@ -69,6 +68,11 @@ export default function Layout({ title, children }) {
 
       <main id="main" className="shell" tabIndex={-1}>
         {children}
+        <div className="star-band" aria-hidden="true">
+          <Starfield variant="wide" className="star-band-field" />
+          <Starfield variant="cluster" className="star-band-field star-band-field-c" />
+          <Starfield variant="knot" className="star-band-field star-band-field-b" />
+        </div>
       </main>
 
       <footer className="footer">

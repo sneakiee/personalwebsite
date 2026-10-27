@@ -1,7 +1,6 @@
 import CelestialArt from '../components/CelestialArt'
 import Layout from '../components/Layout'
 import Reveal from '../components/Reveal'
-import Starfield from '../components/Starfield'
 
 const experiences = [
   {
@@ -25,8 +24,6 @@ export default function Works() {
   return (
     <Layout title="works">
       <section className="panel page-panel" aria-label="Experience">
-        <Starfield variant="b" className="panel-stars" />
-        <Starfield variant="wide" className="panel-stars panel-stars-b" />
 
         <div className="panel-bar">
           <span className="tag">02 / works</span>

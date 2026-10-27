@@ -1,7 +1,6 @@
 import CelestialArt from '../components/CelestialArt'
 import Layout from '../components/Layout'
 import Reveal from '../components/Reveal'
-import Starfield from '../components/Starfield'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function About() {
@@ -11,8 +10,6 @@ export default function About() {
   return (
     <Layout title="about">
       <section className="panel page-panel" aria-label="About Mikael">
-        <Starfield variant="a" className="panel-stars" />
-        <Starfield variant="cluster" className="panel-stars panel-stars-b" />
 
         <div className="panel-bar">
           <span className="tag">01 / about</span>

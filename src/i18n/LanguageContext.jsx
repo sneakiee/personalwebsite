@@ -30,7 +30,7 @@ export function LanguageProvider({ children }) {
     document.documentElement.dataset.theme = theme
     const meta = document.querySelector('meta[name="theme-color"]')
     if (meta) {
-      meta.setAttribute('content', theme === 'dark' ? '#070A18' : '#E9ECF7')
+      meta.setAttribute('content', theme === 'dark' ? '#05060A' : '#E9ECF7')
     }
   }, [theme])
 

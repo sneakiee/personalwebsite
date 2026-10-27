@@ -6,21 +6,21 @@
 ------------------------------------------------------------------- */
 
 :root {
-  --bg: #070a18;
-  --surface: #0c1128;
-  --surface-2: #121a35;
-  --fg: #e9edfa;
-  --soft: #b9c3de;
-  --muted: #8c98bc;
-  --faint: #7784ad;
-  --line: rgba(166, 185, 240, 0.15);
-  --line-strong: rgba(166, 185, 240, 0.32);
-  --accent: #7da2ff;
-  --accent-contrast: #070a18;
-  --accent-2: #a18aff;
-  --panel-shadow: #02040d;
-  --art: #a9bceb;
-  --star: #bfd0ff;
+  --bg: #05060a;
+  --surface: #090b12;
+  --surface-2: #0e111a;
+  --fg: #e6e8ef;
+  --soft: #aeb6c8;
+  --muted: #7f889e;
+  --faint: #737d94;
+  --line: rgba(199, 208, 228, 0.12);
+  --line-strong: rgba(199, 208, 228, 0.24);
+  --accent: #93a9d6;
+  --accent-contrast: #05060a;
+  --accent-2: #9a87c0;
+  --panel-shadow: #000000;
+  --art: #98a7c4;
+  --star: #a6b3cd;
 
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -225,23 +225,16 @@ main:focus {
 .ambience-stars {
   position: absolute;
   font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1vw, 1rem);
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
   line-height: 1.25;
   color: var(--star);
-  opacity: 0.22;
+  opacity: 0.26;
   white-space: pre;
 }
 
 .ambience-stars-top {
-  top: 7rem;
-  right: 1.5vw;
-}
-
-.ambience-stars-bottom {
-  top: 52rem;
-  left: 1.5vw;
-  font-size: clamp(0.6rem, 0.85vw, 0.85rem);
-  opacity: 0.14;
+  top: 6rem;
+  right: 0.5vw;
 }
 
 .masthead,
@@ -249,6 +242,45 @@ main,
 .footer {
   position: relative;
   z-index: 1;
+}
+
+.star-band {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin-top: -2.5rem;
+  margin-bottom: -3rem;
+  padding-block: 0;
+  overflow: hidden;
+  color: var(--star);
+  opacity: 0.82;
+}
+
+.star-band-field {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 1vw, 0.95rem);
+  line-height: 1.2;
+  white-space: pre;
+}
+
+.star-band-field-b {
+  margin-top: clamp(1rem, 3vw, 3rem);
+  margin-left: clamp(-4rem, -3vw, -2rem);
+}
+
+.star-band-field-c {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  margin-left: clamp(-6rem, -5vw, -3rem);
+}
+
+@media (max-width: 1180px) {
+  .star-band-field-c {
+    display: none;
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -378,6 +410,7 @@ main,
 
 .panel {
   position: relative;
+  z-index: 1;
   margin-top: clamp(2rem, 4vw, 3.5rem);
   border: 1px solid var(--line-strong);
   background: var(--surface);
@@ -387,30 +420,6 @@ main,
 .panel > :not(.panel-stars) {
   position: relative;
   z-index: 1;
-}
-
-.panel-stars {
-  position: absolute;
-  top: 6rem;
-  left: 1.5rem;
-  z-index: 0;
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  line-height: 1.2;
-  color: var(--star);
-  opacity: 0.32;
-  white-space: pre;
-  pointer-events: none;
-}
-
-.panel-stars-b {
-  top: auto;
-  right: 1.5rem;
-  bottom: 4rem;
-  left: auto;
-  font-size: 0.55rem;
-  opacity: 0.18;
 }
 
 .panel-bar,
@@ -659,23 +668,9 @@ html[data-theme="light"] .art-label-sun {
 
 .field-index {
   position: relative;
+  z-index: 1;
   margin-top: clamp(1.5rem, 4vw, 3rem);
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-}
-
-.section-stars {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 0;
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  line-height: 1.2;
-  color: var(--star);
-  opacity: 0.2;
-  white-space: pre;
-  pointer-events: none;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .section-head,
@@ -1018,7 +1013,7 @@ html[data-theme="light"] .art-label-sun {
 
 .footer {
   margin-top: auto;
-  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
   padding-bottom: 1.5rem;
 }
 
@@ -1273,28 +1268,22 @@ html[data-theme="light"] .art-label-sun {
     font-size: clamp(3rem, 12vw, 5rem);
   }
 
-  .panel-stars {
-    top: 5rem;
-    left: 1rem;
-    font-size: 0.5rem;
-    opacity: 0.16;
-  }
-
-  .panel-stars-b {
-    top: auto;
-    right: 1rem;
-    bottom: 2rem;
-    left: auto;
-    opacity: 0.12;
-  }
-
-  .section-stars {
-    font-size: 0.45rem;
-    opacity: 0.12;
-  }
-
   .art-frame {
     font-size: 0.6rem;
+  }
+
+  .star-band {
+    gap: 0;
+    justify-content: center;
+  }
+
+  .star-band-field {
+    font-size: 0.7rem;
+  }
+
+  .star-band-field-b,
+  .star-band-field-c {
+    display: none;
   }
 
   .work-block {
@@ -1352,7 +1341,7 @@ html[data-theme="light"] .art-label-sun {
   }
 
   .footer {
-    padding-top: 2.5rem;
+    padding-top: 1rem;
   }
 }
 
@@ -1391,6 +1380,10 @@ html[data-theme="light"] .art-label-sun {
 
   .art-frame {
     font-size: 0.56rem;
+  }
+
+  .star-band-field {
+    font-size: 0.6rem;
   }
 
   .footer-meta {
