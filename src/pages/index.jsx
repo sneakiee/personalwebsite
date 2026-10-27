@@ -1,56 +1,102 @@
 import { Link } from 'react-router-dom'
-import { useLanguage, useTheme, LanguageToggle, ThemeToggle } from '../i18n/LanguageContext'
+import CelestialArt from '../components/CelestialArt'
+import Layout from '../components/Layout'
+import Reveal from '../components/Reveal'
+import Starfield from '../components/Starfield'
+import { useLanguage } from '../i18n/LanguageContext'
+
+const fieldIndex = [
+  { to: '/about', name: 'about', desc: 'bio / tools / origin', index: '01' },
+  { to: '/works', name: 'works', desc: 'roles / experience', index: '02' },
+  { to: '/portfolio', name: 'projects', desc: 'built things / links', index: '03' },
+]
 
 export default function Home() {
-  const { t } = useLanguage()
-  const { theme } = useTheme()
-
-  const isDark = theme === 'dark'
+  const { t, language } = useLanguage()
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-neutral-950 text-white' : 'bg-neutral-100 text-black'} flex items-center justify-center px-6 transition-colors`}>
-      <div className="max-w-md w-full">
-        {/* Main Content */}
-        <div className="space-y-8">
-          {/* Name + Toggles */}
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-medium">mikael gomez</h1>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <LanguageToggle />
+    <Layout>
+      <section className="panel hero-panel" aria-label="Introduction">
+        <Starfield variant="c" className="panel-stars" />
+        <Starfield variant="wide" className="panel-stars panel-stars-b" />
+
+        <div className="panel-bar">
+          <span className="tag">index / 00</span>
+          <span className="tag">design &amp; code</span>
+        </div>
+
+        <div className="hero-grid">
+          <div className="hero-main">
+            <h1 className="hero-title">
+              <span className="line">mikael</span>
+              <span className="line line-2">
+                gomez<span className="accent">.</span>
+              </span>
+            </h1>
+
+            <div className="hero-info">
+              <div className="status-block">
+                <span className="label">currently</span>
+                <span className="status-line">cs student</span>
+                <span className="status-line">mcmaster university</span>
+                <span className="status-line mono">hamilton, ontario</span>
+              </div>
+
+              <div className="hero-bio">
+                <p lang={language}>{t('bio1')}</p>
+                <p lang={language}>{t('bio2')}</p>
+              </div>
+            </div>
+
+            <div className="hero-actions">
+              <Link to="/about" className="button">
+                read the full bio <span aria-hidden="true">↗</span>
+              </Link>
             </div>
           </div>
-          
-          {/* Bio */}
-          <div className={`space-y-4 ${isDark ? 'text-neutral-400' : 'text-neutral-600'} leading-relaxed`}>
-            <p>{t('bio1')}</p>
-            <p>{t('bio2')}</p>
-          </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link to="/about" className={`${isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-500 hover:text-black'} transition-colors`}>about</Link>
-            <Link to="/works" className={`${isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-500 hover:text-black'} transition-colors`}>works</Link>
-            <Link to="/portfolio" className={`${isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-500 hover:text-black'} transition-colors`}>projects</Link>
-          </nav>
-
-          {/* Social Links */}
-          <div className={`flex flex-wrap gap-x-6 gap-y-2 text-sm pt-4 border-t ${isDark ? 'border-neutral-900' : 'border-neutral-200'}`}>
-            <a href="https://github.com/sneakiee" target="_blank" rel="noopener noreferrer" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>
-              github
-            </a>
-            <a href="https://linkedin.com/in/mikael-a-gomez" target="_blank" rel="noopener noreferrer" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>
-              linkedin
-            </a>
-            <a href="mailto:gomezm9@mcmaster.ca" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>
-              email
-            </a>
-            <a href="https://www.youtube.com/@SteelTownPowerRangers" target="_blank" rel="noopener noreferrer" className={`${isDark ? 'text-neutral-500 hover:text-white' : 'text-neutral-400 hover:text-black'} transition-colors`}>
-              stpr
-            </a>
-          </div>
+          <figure className="art-frame hero-art">
+            <CelestialArt body="earth" />
+            <figcaption>
+              <span className="label">fig. 00 / earth</span>
+              <span className="label">sol iii</span>
+            </figcaption>
+          </figure>
         </div>
-      </div>
-    </div>
+
+        <div className="panel-base">
+          <span className="label">43.2557° N / 79.8711° W</span>
+          <span className="label">scroll / field index ↓</span>
+        </div>
+      </section>
+
+      <section className="field-index" aria-labelledby="field-index-title">
+        <Starfield variant="cluster" className="section-stars" />
+        <Reveal className="section-head">
+          <div className="section-heading">
+            <span className="tag">01 / index</span>
+            <h2 id="field-index-title" className="section-title">
+              field index
+            </h2>
+          </div>
+          <span className="label">03 entries / local</span>
+        </Reveal>
+
+        <ul className="index-list">
+          {fieldIndex.map((item, i) => (
+            <Reveal as="li" key={item.to} delay={i * 70}>
+              <Link to={item.to} className="index-block">
+                <span className="index-num">{item.index}</span>
+                <span className="index-name">{item.name}</span>
+                <span className="index-desc">{item.desc}</span>
+                <span className="index-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </section>
+    </Layout>
   )
 }
