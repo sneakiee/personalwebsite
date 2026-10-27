@@ -96,6 +96,43 @@ export function LanguageToggle() {
 }
 
 // Theme toggle component
+function MoonIcon() {
+  return (
+    <svg
+      className="theme-glyph"
+      viewBox="0 0 16 16"
+      width="15"
+      height="15"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M10.7 2.1a5.9 5.9 0 1 0 3.2 10.2 4.8 4.8 0 0 1-3.2-10.2Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+function SunIcon() {
+  return (
+    <svg
+      className="theme-glyph"
+      viewBox="0 0 16 16"
+      width="15"
+      height="15"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="8" cy="8" r="3.1" />
+      <path d="M8 1.2v1.5M8 13.3v1.5M1.2 8h1.5M13.3 8h1.5M3.2 3.2l1.1 1.1M11.7 11.7l1.1 1.1M12.8 3.2l-1.1 1.1M4.3 11.7l-1.1 1.1" />
+    </svg>
+  )
+}
+
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
   const next = theme === 'dark' ? 'light' : 'dark'
@@ -104,11 +141,11 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="control"
+      className="control control-theme"
       aria-label={`switch to ${next} theme`}
       title={`switch to ${next} theme`}
     >
-      <span aria-hidden="true">◐</span>
+      {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
     </button>
   )
 }

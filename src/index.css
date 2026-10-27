@@ -404,6 +404,18 @@ main,
   color: var(--accent);
 }
 
+.control-theme {
+  color: var(--soft);
+}
+
+.theme-glyph {
+  display: block;
+}
+
+.control-theme:hover {
+  color: var(--accent);
+}
+
 /* ------------------------------------------------------------------
    panels + block components
 ------------------------------------------------------------------- */
