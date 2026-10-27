@@ -964,7 +964,7 @@ html[data-theme="light"] .art-label-sun {
   display: grid;
   grid-template-areas: "num title desc arrow";
   grid-template-columns: 3.5rem minmax(0, 5fr) minmax(0, 6fr) 2rem;
-  align-items: baseline;
+  align-items: center;
   gap: var(--gap);
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--line);
