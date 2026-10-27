@@ -14,13 +14,13 @@ export const translations = {
   tl: {
     // Home page
     bio1: "estudyante ng cs sa mcmaster university, nakatira sa hamilton, on.",
-    bio2: "dating interesado sa graphic design, kasalukuyang nag-eexplore ng mga career path habang inuuna ang passion at mga pangarap.",
+    bio2: "dating interesado sa graphic design, ngayon nag-eexplore ng mga career path habang inuuna ang passion at mga pangarap.",
     
     // About page
-    aboutBio1: "ako si mikael, estudyante ng computer science sa mcmaster university. palagi akong naaakit sa paggawa ng mga bagay — nagsimula sa graphic design bago nakahanap ng daan sa code.",
-    aboutBio2: "ngayon, nakatutok ako sa pag-aaral ng maraming bagay, paggawa ng mga proyektong interesado ako, at pag-iisip kung saan ko gustong dalhin ang aking career.",
-    aboutBio3: "kapag hindi nagco-code, makikita mo akong naglalaro ng video games at nag-eedit ng mga video.",
-    skillsTitle: "mga ginagamit ko",
+    aboutBio1: "ako si mikael, estudyante ng computer science sa mcmaster university. palagi akong gusto sa paggawa ng mga projects — nagsimula ako sa graphic design pero nagpasok ako sa coding.",
+    aboutBio2: "ngayon, nakatutok ako sa pag-aaral ng maraming hindi ko alam, paggawa ng mga projects na interesado ako, at pag-iisip kung saan ko gustong dalhin ang aking career.",
+    aboutBio3: "kapag hindi ako nagco-code, makikita mo akong naglalaro ng video games at nag-eedit ng mga videos.",
+    skillsTitle: "gamit ko",
     skills: "java, javascript, react, next.js, python, tailwind, figma, github, photoshop, illustrator, after effects, premiere",
   },
   // ko: {
