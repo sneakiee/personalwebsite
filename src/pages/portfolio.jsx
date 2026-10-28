@@ -27,7 +27,6 @@ export default function Portfolio() {
 
         <div className="panel-bar">
           <span className="tag">03 / projects</span>
-          <span className="tag">03 entries</span>
         </div>
 
         <div className="page-top">

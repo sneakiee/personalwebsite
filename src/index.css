@@ -146,7 +146,6 @@ svg {
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
   padding: 0.3rem 0.5rem;
   border: 1px solid var(--line);
   background: var(--bg);
@@ -156,14 +155,6 @@ svg {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.tag::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  flex: none;
-  background: var(--accent-2);
 }
 
 .sr-only {
@@ -359,14 +350,13 @@ main,
 }
 
 .nav-cell[aria-current="page"] {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--accent-contrast);
+  border-color: var(--muted);
+  background: var(--surface-2);
+  color: var(--fg);
 }
 
 .nav-cell[aria-current="page"] .nav-index {
-  color: var(--accent-contrast);
-  opacity: 1;
+  color: var(--muted);
 }
 
 .controls {
@@ -459,6 +449,10 @@ main,
 
 .panel-base .label {
   color: var(--muted);
+}
+
+.panel-base-tail {
+  justify-content: flex-end;
 }
 
 .button {
@@ -626,7 +620,7 @@ html[data-theme="light"] .art-label-sun {
 
 .hero-info {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--gap);
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
   padding-top: clamp(1.25rem, 2.5vw, 2rem);
@@ -648,6 +642,7 @@ html[data-theme="light"] .art-label-sun {
 }
 
 .status-line {
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.4;
   color: var(--soft);
@@ -661,13 +656,6 @@ html[data-theme="light"] .art-label-sun {
 
 .hero-bio p + p {
   margin-top: 0.9rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
 }
 
 .hero-art {
@@ -1141,8 +1129,8 @@ html[data-theme="light"] .art-label-sun {
 }
 
 .footer-nav a {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);

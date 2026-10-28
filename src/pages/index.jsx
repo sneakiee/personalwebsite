@@ -18,8 +18,7 @@ export default function Home() {
       <section className="panel hero-panel" aria-label="Introduction">
 
         <div className="panel-bar">
-          <span className="tag">index / 00</span>
-          <span className="tag">design &amp; code</span>
+          <span className="tag">00 / index</span>
         </div>
 
         <div className="hero-grid">
@@ -32,23 +31,10 @@ export default function Home() {
             </h1>
 
             <div className="hero-info">
-              <div className="status-block">
-                <span className="label">currently</span>
-                <span className="status-line">cs student</span>
-                <span className="status-line">mcmaster university</span>
-                <span className="status-line mono">hamilton, ontario</span>
-              </div>
-
               <div className="hero-bio">
                 <p lang={language}>{t('bio1')}</p>
                 <p lang={language}>{t('bio2')}</p>
               </div>
-            </div>
-
-            <div className="hero-actions">
-              <Link to="/about" className="button">
-                read the full bio <span aria-hidden="true">↗</span>
-              </Link>
             </div>
           </div>
 
@@ -61,8 +47,7 @@ export default function Home() {
           </figure>
         </div>
 
-        <div className="panel-base">
-          <span className="label">43.2557° N / 79.8711° W</span>
+        <div className="panel-base panel-base-tail">
           <span className="label">scroll / field index ↓</span>
         </div>
       </section>

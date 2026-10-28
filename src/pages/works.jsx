@@ -27,7 +27,6 @@ export default function Works() {
 
         <div className="panel-bar">
           <span className="tag">02 / works</span>
-          <span className="tag">03 entries</span>
         </div>
 
         <div className="page-top">
@@ -64,7 +63,7 @@ export default function Works() {
         </ul>
 
         <div className="panel-base">
-          <span className="label">resume / in preparation</span>
+          <span className="label">linkedin / full profile</span>
           <a
             className="button button-ghost"
             href="https://linkedin.com/in/mikael-a-gomez"

@@ -13,7 +13,6 @@ export default function About() {
 
         <div className="panel-bar">
           <span className="tag">01 / about</span>
-          <span className="tag">bio / tools</span>
         </div>
 
         <div className="page-top">

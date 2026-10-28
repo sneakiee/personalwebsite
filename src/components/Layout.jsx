@@ -16,13 +16,6 @@ const socials = [
   { href: 'https://www.youtube.com/@SteelTownPowerRangers', label: 'stpr' },
 ]
 
-const footerNav = [
-  { to: '/', label: 'home' },
-  { to: '/about', label: 'about' },
-  { to: '/works', label: 'works' },
-  { to: '/portfolio', label: 'projects' },
-]
-
 export default function Layout({ title, children }) {
   const pageTitle = title ? `${title} — mikael's website` : "mikael's website"
 
@@ -128,13 +121,6 @@ export default function Layout({ title, children }) {
 
           <div className="footer-base">
             <span className="label">© {new Date().getFullYear()} mikael gomez</span>
-            <nav className="footer-nav" aria-label="Footer">
-              {footerNav.map((item) => (
-                <Link key={item.to} to={item.to}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
             <span className="label">design &amp; code</span>
           </div>
         </div>
