@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=IBM+Plex+Mono:wght@400&family=Instrument+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coustard&family=Geo&family=IBM+Plex+Mono:wght@400&family=Instrument+Sans:wght@400&display=swap');
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
@@ -20,9 +20,12 @@
   --accent-2: #9a87c0;
   --panel-shadow: #000000;
   --art: #98a7c4;
+  --art-live: #d4c4fb;
   --star: #a6b3cd;
 
-  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-display: "Coustard", "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-subtitle: "Coustard", "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-caps: "Geo", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -48,6 +51,7 @@ html[data-theme="light"] {
   --accent-2: #6b57c8;
   --panel-shadow: #c7cee3;
   --art: #4c5b84;
+  --art-live: #3d27a4;
   --star: #33426b;
 }
 
@@ -134,8 +138,8 @@ svg {
 
 .label {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.12em;
@@ -150,8 +154,8 @@ svg {
   padding: 0.3rem 0.5rem;
   border: 1px solid var(--line);
   background: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   line-height: 1.2;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -186,8 +190,8 @@ svg {
   padding: 0.6rem 0.9rem;
   background: var(--fg);
   color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-family: var(--font-caps);
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transform: translateY(-160%);
@@ -306,7 +310,7 @@ main,
 }
 
 .brand-name {
-  font-family: var(--font-display);
+  font-family: var(--font-subtitle);
   font-size: 1.25rem;
   line-height: 1;
   letter-spacing: -0.01em;
@@ -317,8 +321,8 @@ main,
 }
 
 .brand-meta {
-  font-family: var(--font-mono);
-  font-size: 0.5rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   line-height: 1.2;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -338,8 +342,8 @@ main,
   padding: 0.55rem 0.65rem;
   border: 1px solid var(--line-strong);
   background: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -348,7 +352,7 @@ main,
 }
 
 .nav-index {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   color: var(--faint);
 }
 
@@ -389,8 +393,8 @@ main,
   padding: 0;
   border: 1px solid var(--line-strong);
   background: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
@@ -469,8 +473,8 @@ main,
   border: 1px solid var(--accent);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   line-height: 1.2;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -529,6 +533,128 @@ main,
   color: var(--art);
   white-space: pre;
   opacity: 0.92;
+  animation:
+    ascii-breathe 30s ease-in-out infinite,
+    ascii-float 11s ease-in-out infinite;
+}
+
+/* Character cells stay exactly one column wide, so glyph swaps never move
+   the drawing or the content around it. */
+.ascii-glyph {
+  display: inline-grid;
+  grid-template-areas: "glyph";
+  place-items: center;
+  width: 1ch;
+  line-height: inherit;
+  vertical-align: baseline;
+}
+
+.ascii-glyph > span {
+  grid-area: glyph;
+}
+
+.ascii-glyph-base,
+.ascii-glyph-alt {
+  animation-duration: var(--glyph-duration, 26s);
+  animation-delay: var(--glyph-delay, 0s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ascii-glyph-base {
+  animation-name: ascii-glyph-base;
+}
+
+.ascii-glyph-alt {
+  animation-name: ascii-glyph-alt;
+  color: var(--art-live);
+  opacity: 0;
+}
+
+.ascii-twinkle {
+  animation: ascii-twinkle var(--twinkle-duration, 11s) ease-in-out
+    var(--twinkle-delay, 0s) infinite;
+}
+
+@keyframes ascii-breathe {
+  0%,
+  100% {
+    opacity: 0.94;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ascii-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes ascii-glyph-base {
+  0%,
+  20% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  30%,
+  44% {
+    opacity: 0;
+    transform: translate3d(var(--glyph-dx, 0ch), var(--glyph-dy, 0em), 0);
+  }
+
+  54%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ascii-glyph-alt {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+
+  30%,
+  44% {
+    opacity: 1;
+    transform: translate3d(var(--glyph-dx, 0ch), var(--glyph-dy, 0em), 0);
+  }
+
+  54%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ascii-twinkle {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+
+  46%,
+  60% {
+    opacity: 1;
+  }
+}
+
+.is-motion-paused .ascii-glyph-base,
+.is-motion-paused .ascii-glyph-alt,
+.is-motion-paused .ascii-twinkle,
+.ascii-art.is-motion-paused {
+  animation-play-state: paused;
 }
 
 .art-frame figcaption {
@@ -543,7 +669,7 @@ main,
 }
 
 .art-frame figcaption .label {
-  font-size: 0.5625rem;
+  font-size: 0.6875rem;
 }
 
 .celestial-swap {
@@ -605,10 +731,10 @@ html[data-theme="light"] .art-label-sun {
 .hero-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(3.75rem, 11.5vw, 9.5rem);
+  font-size: clamp(3.25rem, 10vw, 8.5rem);
   font-weight: 400;
-  line-height: 0.97;
-  letter-spacing: -0.015em;
+  line-height: 1.04;
+  letter-spacing: 0;
 }
 
 .hero-title .line {
@@ -617,7 +743,7 @@ html[data-theme="light"] .art-label-sun {
 
 .hero-title .line-2 {
   padding-left: clamp(1.5rem, 10vw, 9rem);
-  font-style: italic;
+  font-style: normal;
 }
 
 .hero-title .accent {
@@ -648,6 +774,7 @@ html[data-theme="light"] .art-label-sun {
 }
 
 .status-line {
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.4;
   color: var(--soft);
@@ -681,7 +808,7 @@ html[data-theme="light"] .art-label-sun {
 .field-index {
   position: relative;
   z-index: 1;
-  margin-top: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2.25rem, 6.5vw, 4.5rem);
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -712,8 +839,8 @@ html[data-theme="light"] .art-label-sun {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.015em;
+  line-height: 1.08;
+  letter-spacing: 0;
 }
 
 .index-list {
@@ -746,17 +873,17 @@ html[data-theme="light"] .art-label-sun {
 .index-num {
   grid-area: num;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   color: var(--faint);
 }
 
 .index-name {
   grid-area: name;
-  font-family: var(--font-display);
+  font-family: var(--font-subtitle);
   font-size: clamp(1.75rem, 3.8vw, 3rem);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.015em;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
   transition: color 0.2s var(--ease), transform 0.25s var(--ease);
 }
 
@@ -767,8 +894,8 @@ html[data-theme="light"] .art-label-sun {
 
 .index-desc {
   grid-area: desc;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -808,28 +935,29 @@ html[data-theme="light"] .art-label-sun {
 .page-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 8.5vw, 7rem);
+  font-size: clamp(3rem, 7.75vw, 6.25rem);
   font-weight: 400;
-  line-height: 0.97;
-  letter-spacing: -0.015em;
+  line-height: 1.02;
+  letter-spacing: 0;
 }
 
 .page-lede {
   max-width: 48ch;
   margin: clamp(1.25rem, 2.5vw, 2rem) 0 0;
+  font-family: var(--font-subtitle);
   color: var(--soft);
 }
 
 .page-lede.mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-subtitle);
   font-size: 0.6875rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .page-lede.serif {
-  font-family: var(--font-display);
+  font-family: var(--font-subtitle);
   font-size: clamp(1.35rem, 2.4vw, 1.9rem);
   line-height: 1.35;
   letter-spacing: -0.005em;
@@ -924,16 +1052,16 @@ html[data-theme="light"] .art-label-sun {
 
 .work-num {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   color: var(--faint);
 }
 
 .work-role {
-  font-family: var(--font-display);
+  font-family: var(--font-subtitle);
   font-size: clamp(1.4rem, 2.8vw, 2.4rem);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
 }
 
 .work-company {
@@ -943,7 +1071,7 @@ html[data-theme="light"] .art-label-sun {
 
 .work-period {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--muted);
   text-align: right;
 }
@@ -980,17 +1108,17 @@ html[data-theme="light"] .art-label-sun {
 .project-num {
   grid-area: num;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   color: var(--faint);
 }
 
 .project-title {
   grid-area: title;
-  font-family: var(--font-display);
+  font-family: var(--font-subtitle);
   font-size: clamp(1.5rem, 2.8vw, 2.4rem);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   transition: color 0.2s var(--ease), transform 0.25s var(--ease);
 }
 
@@ -1074,8 +1202,8 @@ html[data-theme="light"] .art-label-sun {
   display: inline-block;
   padding: 0.3rem 0.45rem;
   border: 1px solid var(--line);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   line-height: 1.2;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1141,8 +1269,8 @@ html[data-theme="light"] .art-label-sun {
 }
 
 .footer-nav a {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -1182,6 +1310,27 @@ html[data-theme="light"] .art-label-sun {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .ascii-glyph-base {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .ascii-glyph-alt {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .ascii-twinkle {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .ascii-art {
+    animation: none !important;
+    opacity: 0.92 !important;
+    transform: none !important;
   }
 }
 
@@ -1269,7 +1418,7 @@ html[data-theme="light"] .art-label-sun {
   }
 
   .hero-title {
-    font-size: clamp(3.25rem, 15vw, 5.5rem);
+    font-size: clamp(2.9rem, 13vw, 4.75rem);
   }
 
   .hero-title .line-2 {
@@ -1277,7 +1426,7 @@ html[data-theme="light"] .art-label-sun {
   }
 
   .page-title {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(2.75rem, 10.5vw, 4.5rem);
   }
 
   .art-frame {
@@ -1368,7 +1517,7 @@ html[data-theme="light"] .art-label-sun {
   }
 
   .index-desc {
-    font-size: 0.5625rem;
+    font-size: 0.6875rem;
   }
 
   .tool-list {
