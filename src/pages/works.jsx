@@ -9,9 +9,9 @@ const experiences = [
     period: '2024-2025',
   },
   {
-    role: 'hybrid designer/developer',
-    company: 'acnecura',
-    period: '2025',
+    role: 'vp design',
+    company: 'mcmaster blueprint chapter',
+    period: '2026',
   },
   {
     role: 'freelance graphic designer',

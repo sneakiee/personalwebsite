@@ -55,7 +55,6 @@ export default function Home() {
       <section className="field-index" aria-labelledby="field-index-title">
         <Reveal className="section-head">
           <div className="section-heading">
-            <span className="tag">01 / index</span>
             <h2 id="field-index-title" className="section-title">
               field index
             </h2>

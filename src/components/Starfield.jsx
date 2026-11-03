@@ -1,6 +1,8 @@
 // Seeded, hand-tuned ASCII star fields. Fixed compositions with intended clusters, gaps, and density changes.
 // The random seed only supplies the irregular placement; the density fields define the composition.
 
+import { AnimatedStars } from './AnimatedAscii'
+
 const FIELDS = {
   wide: ` +             .  :                  .
                       '        '      .   :         :
@@ -29,8 +31,10 @@ const FIELDS = {
 
 export default function Starfield({ variant = 'wide', className = '' }) {
   return (
-    <pre className={`starfield ${className}`} aria-hidden="true">
-      {FIELDS[variant]}
-    </pre>
+    <AnimatedStars
+      text={FIELDS[variant]}
+      variant={variant}
+      className={className}
+    />
   )
 }
