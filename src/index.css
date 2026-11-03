@@ -1076,6 +1076,66 @@ html[data-theme="light"] .art-label-sun {
   color: var(--accent);
 }
 
+.footer-friends {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  width: 100%;
+  margin-top: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.friend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.friend-row a {
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  line-height: 0;
+  transition: border-color 0.2s var(--ease);
+}
+
+.friend-row a:hover {
+  border-color: var(--accent);
+}
+
+.friend-row a.is-missing {
+  display: inline-flex;
+  align-items: center;
+  min-height: 33px;
+  padding: 0 0.55rem;
+  line-height: 1.2;
+  font-family: var(--font-caps);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.friend-row a.is-missing img {
+  display: none;
+}
+
+.friend-row a.is-missing::after {
+  content: attr(data-label);
+}
+
+.friend-row img {
+  display: block;
+  width: 88px;
+  height: 31px;
+  image-rendering: pixelated;
+}
+
 .footer-pisces {
   display: flex;
   flex-direction: column;

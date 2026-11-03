@@ -16,6 +16,11 @@ const socials = [
   { href: 'https://www.youtube.com/@SteelTownPowerRangers', label: 'stpr' },
 ]
 
+const friends = [
+  { href: 'https://www.ethantran.ca', src: 'https://www.ethantran.ca/button.png', label: 'Ethan Tran' },
+  { href: 'https://www.wcagas.com', src: 'https://www.wcagas.com/assets/buttons/will.gif', label: 'William Cagas' },
+]
+
 export default function Layout({ title, children }) {
   const pageTitle = title ? `${title} — mikael's website` : "mikael's website"
 
@@ -91,6 +96,34 @@ export default function Layout({ title, children }) {
                   </li>
                 ))}
               </ul>
+
+              <div className="footer-friends">
+                <span className="tag">friends</span>
+                <ul className="friend-row" aria-label="Friends' sites">
+                  {friends.map((friend) => (
+                    <li key={friend.href}>
+                      <a
+                        className="friend-badge"
+                        href={friend.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-label={friend.label}
+                      >
+                        <img
+                          src={friend.src}
+                          width="88"
+                          height="31"
+                          alt={friend.label}
+                          onError={(event) => {
+                            event.currentTarget.closest('a')?.classList.add('is-missing')
+                          }}
+                        />
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div className="footer-pisces">
