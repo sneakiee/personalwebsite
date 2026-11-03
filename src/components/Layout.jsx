@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { LanguageToggle, ThemeToggle } from '../i18n/LanguageContext'
+import mikaelButton from '../assets/button.gif'
 import PiscesMark from './PiscesMark'
 import Starfield from './Starfield'
 
@@ -17,8 +18,9 @@ const socials = [
 ]
 
 const friends = [
-  { href: 'https://www.ethantran.ca', src: 'https://www.ethantran.ca/button.png', label: 'Ethan Tran' },
-  { href: 'https://www.wcagas.com', src: 'https://www.wcagas.com/assets/buttons/will.gif', label: 'William Cagas' },
+  { href: '/', src: mikaelButton, label: 'Mikael Gomez' },
+  { href: 'https://www.ethantran.ca', src: 'https://www.ethantran.ca/button.gif', label: 'Ethan Tran', external: true },
+  { href: 'https://www.wcagas.com', src: 'https://www.wcagas.com/assets/buttons/button.gif', label: 'William Cagas', external: true },
 ]
 
 export default function Layout({ title, children }) {
@@ -100,15 +102,9 @@ export default function Layout({ title, children }) {
               <div className="footer-friends">
                 <span className="tag">friends</span>
                 <ul className="friend-row" aria-label="Friends' sites">
-                  {friends.map((friend) => (
-                    <li key={friend.href}>
-                      <a
-                        className="friend-badge"
-                        href={friend.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-label={friend.label}
-                      >
+                  {friends.map((friend) => {
+                    const badge = (
+                      <>
                         <img
                           src={friend.src}
                           width="88"
@@ -118,10 +114,32 @@ export default function Layout({ title, children }) {
                             event.currentTarget.closest('a')?.classList.add('is-missing')
                           }}
                         />
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    </li>
-                  ))}
+                        {friend.external && (
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        )}
+                      </>
+                    )
+
+                    return (
+                      <li key={friend.src}>
+                        {friend.external ? (
+                          <a
+                            className="friend-badge"
+                            href={friend.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-label={friend.label}
+                          >
+                            {badge}
+                          </a>
+                        ) : (
+                          <Link className="friend-badge" to={friend.href} data-label={friend.label}>
+                            {badge}
+                          </Link>
+                        )}
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>
