@@ -423,7 +423,7 @@ main,
   box-shadow: 6px 6px 0 var(--panel-shadow);
 }
 
-.panel > :not(.panel-stars) {
+.panel > * {
   position: relative;
   z-index: 1;
 }
@@ -751,27 +751,6 @@ html[data-theme="light"] .art-label-sun {
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
   padding-top: clamp(1.25rem, 2.5vw, 2rem);
   border-top: 1px solid var(--line);
-}
-
-.status-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.35rem;
-  padding: 1rem;
-  border: 1px solid var(--line);
-  background: var(--bg);
-}
-
-.status-block .label {
-  margin-bottom: 0.35rem;
-}
-
-.status-line {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  line-height: 1.4;
-  color: var(--soft);
 }
 
 .hero-bio p {
@@ -1307,25 +1286,6 @@ html[data-theme="light"] .art-label-sun {
   margin-top: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
-}
-
-.footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-}
-
-.footer-nav a {
-  font-family: var(--font-caps);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color 0.2s var(--ease);
-}
-
-.footer-nav a:hover {
-  color: var(--accent);
 }
 
 /* ------------------------------------------------------------------
