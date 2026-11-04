@@ -21,6 +21,7 @@ const friends = [
   { href: '/', src: mikaelButton, label: 'Mikael Gomez' },
   { href: 'https://www.ethantran.ca', src: 'https://www.ethantran.ca/button.gif', label: 'Ethan Tran', external: true },
   { href: 'https://www.wcagas.com', src: 'https://www.wcagas.com/assets/buttons/button.gif', label: 'William Cagas', external: true },
+  { href: 'https://www.oscarzhao.ca', src: 'https://www.oscarzhao.ca/button.gif', label: 'Oscar Zhao', external: true },
 ]
 
 export default function Layout({ title, children }) {
